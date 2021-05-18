@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<style>
+    .spinner.close {
+        display: none;
+    }
+    .fiba{
+        font-size: 72px;
+        color: #373A3C;
+    }
+    button{
+        background: #0275D8;
+    }
+    .answear{
+        font-size: 24px;
+    }
+    .results{
+        font-size: 54px;
+    }
+    .eror_conteiner{
+        position: fixed;
+          right: 5px;
+          width: 50%;
+          color: white;
+            display: flex;
+            align-items: center;
+         justify-content: space-evenly;
+         transition: all .7s;
+        transform: translate(0,0);
+    }
+    .eror_conteiner.anim {
+        transform: translate(200%, 0);
+        height: 40px;
+        width: 100px;
+        background: #0275D8; 
+         border: 1px solid #EBCCCC;
+    }
+    .eror{
+        position: relative;
+        color: #A94442;
+    background: #F2DEDE;
+  
+    font-size: 16px;
+    }
+    .eror_close{
+    position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 10px;
+      background: red
+    }
+    .mistake{
+        color: red;
+      
+    }
+    .min{
+        color: red;
+    }
+    
+    .bounce-2{
+        position: fixed;
+        z-index: -1;
+        align-self: flex-end;
+            /* animation-duration: 4s;
+            animation-iteration-count:infinite; */
+            /* background-color: #F44336; */
+            height: 200px;
+            margin: 0 auto 0 auto;
+            transform-origin: bottom;
+            width: 200px;
+            /* animation-delay: 2s;
+            animation-name: bounce-2;
+            animation-timing-function: ease; */
+    
+            animation: bounce-2 4s infinite 2s  ease;
+    }
+    
+    .bounce-2:hover{
+        animation-play-state: paused;
+    }
+    
+        @keyframes bounce-2 {
+            0%   { transform: translateY(0)  rotateZ(0);
+                background-color: #5f36f4
+             ;}
+            4%   { transform: translateY(15px)  rotateZ(10deg) ;}
+            12%   { transform: translateY(45px)  rotateZ(-10deg) ;}
+            20%   { transform: translateY(75px)  rotateZ(12deg);
+                background-color: #36f436
+             ;}
+            28%   { transform: translateY(105px)  rotateZ(-12deg) ;}
+            36%   { transform: translateY(135px)  rotateZ(14deg) ;}
+            42%   { transform: translateY(165px)  rotateZ(-14deg) ;
+                background-color: #fae207;
+            }
+            50%   { transform: translateY(195px)  rotateZ(16deg) ;}
+            58%   { transform: translateY(225px) translateX(65px)
+             rotateZ(-16deg) ;}
+            64%   { transform: translateY(255px) translateX(105px)
+             rotateZ(18deg) ;}
+             72%   { transform: translateY(285px) translateX(135px)
+             rotateZ(-18deg) ;
+             background-color: #fa0707;
+             }
+             80%   { transform: translateY(305px) translateX(165px)
+             rotateZ(20deg) ;
+             }
+             88%   { transform: translateY(335px) translateX(195px)
+             rotateZ(-20deg) ;
+             background-color: #3407fa;
+             }
+             94%   { transform: translateY(365px) translateX(155px)
+             rotateZ(180deg) ;
+             }
+            100%   { transform: translateY(410px) translateX(175px)
+             rotateZ(360deg) ;
+    
+             }
+        }
+    
+    </style>
+<body>
+    <div class="root"></div>
+    <div class="containre_fib"></div>
+
+<script src="./script_class.js"></script>
+</body>
+</html>
