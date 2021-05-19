@@ -1,6 +1,6 @@
 'use strict'
 
-
+let str_1;
 class Newclass{
     constructor(all_project, result){
     this.all_project=document.querySelector('.'+all_project)
@@ -16,7 +16,6 @@ class Newclass{
     this.results=null
     this.newMas=[]
     this.spinner=null
-    // this.anim=null
     }
 
 
@@ -53,7 +52,7 @@ give_all_the_fanction(){
     this.add_selection("results")
     this.eveButton()
     this.add_selection("spinner")
-    // this.add_selection("anim")
+
 }
 add_selection(class_){
   this[class_]=document.querySelector("."+class_)
@@ -85,7 +84,6 @@ addMas=(data)=>{
     [
        {...data, date_sort:new Date().getTime(),  current_date:new Date().toDateString()+" "+new Date().getHours()+":"+new Date().getMinutes()},...this.newMas
     ]
-  //  this.sort()
   this.sort_value()
   this.paint()
     
@@ -118,12 +116,10 @@ mistake42=(ero)=>{
   <p>${ero.message}</p> 
   <button class="eror_close">X</button>
   </div>`;
-// document.querySelector('.eror').classList.remove("anim");
   
 document.querySelector('.eror_close').addEventListener("click",e=>{ 
-this.eror.innerHTML = ''
-  // console.log(document.querySelector('.eror'))
-  // document.querySelector('.eror').classList.add("anim")
+
+this.eror.innerHTML=""
   })
 }
 
@@ -131,12 +127,19 @@ add_sort=()=>{
   this.sort.addEventListener("change", this.sort_value)
 }
 
+creat_new_date=()=>{
+this.addMas({
+  number:this.input.value,
+ results:this.fibEror(this.input.value)
+})
 
+}
+//!!!!!!!!!!!!!!!!!
 sort_value=()=>{
   switch(this.sort.value){
-      case "0":
-        this.newMas.sort((a,b)=>a.number-b.number)
-        break;
+    case '0':
+      this.newMas.sort((a,b)=>a.number-b.number)
+       break;
         case "1":
           this.newMas.sort((a,b)=>b.number-a.number)
           break;
@@ -146,13 +149,12 @@ sort_value=()=>{
           case "3":
             this.newMas.sort((a,b)=>b.date_sort-a.date_sort)
             break;
-    
-          }
+
+  }
           this.paint()
-          
-          
-    
+
         }
+        
         
         fetch_serch=(num)=>{
           this.button.disabled=true
@@ -170,8 +172,15 @@ sort_value=()=>{
       })
       .then(this.addMas)
       .catch(prom=>{
+        if(prom.stack) {
+        if(prom.stack.includes("TypeError")){
+         
+          this.creat_new_date()
+
+          return
+        }
+      }
         const promise_json=prom.json()
-        console.log(prom)
         switch(prom.status){
           
             case 442:promise_json.then(e=>{
@@ -185,16 +194,10 @@ sort_value=()=>{
               })
               break;
               default:
-               
-
-               this.addMas(  {
-                 number : this.input.value,
-                 result : fibEror(this.input.value)
-                 
-               } 
-               
-               )
+                this.creat_new_date()
+             
                 this.paint()
+           
               }
             })
             .finally(()=>{
@@ -203,16 +206,10 @@ sort_value=()=>{
             })
           }
           
-          
-          
-          
+
         }
         
-        
-        
-        
-        
-        
+
         const fibEror=a=>{
           if(a<2){
             return a
@@ -236,62 +233,4 @@ const obj = {
 obj["age1"] = 13
 
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class Animal{
-//     constructor(type,age,color,kg){
-//         this.type=type
-//         this.age=age
-//         this.color=color
-//         this.kg=kg
-//         this.id=4
-//         this.name = null
-//         this.isWhose = false
-//     }
-
-// prove(){
-
-//        const ans = +prompt('whats yor name',[])
-//        if( ans)
-//      this.kg=ans
-//        console.log(ans);
-//     }
-//         arpaint() {
-//         this.name=
-//     prompt('whats yor name',[])
-//     }
-
-    
-// }
-
-
-// const cat = new Animal('cat', 5, 'gray', 3.5)
-// cat.prove()
-// [1,2,3,4,45,2].map_2()
 
